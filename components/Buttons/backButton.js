@@ -1,5 +1,5 @@
 import React from 'react'
-import {Image, TouchableOpacity, StyleSheet} from 'react-native'
+import {Image, Pressable, StyleSheet} from 'react-native'
 import {connect} from 'react-redux'
 
 export default connect (state => state) ((props) => {
@@ -19,9 +19,13 @@ export default connect (state => state) ((props) => {
 	}
 
 	return <>
-		<TouchableOpacity onPress = {getBack} style = {styles.button}>
+		<Pressable
+			onPress = {getBack}
+			style = {styles.button}
+			hitSlop = {20}
+		>
 			<Image style = {styles.img} source = {require('../../assets/arrow-left-white.png')}/>
-		</TouchableOpacity>
+		</Pressable>
 	</>
 })
 

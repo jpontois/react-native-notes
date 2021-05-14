@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {Text, ScrollView, TextInput, TouchableOpacity, StyleSheet, Image} from 'react-native'
+import {Text, ScrollView, TextInput, Pressable, StyleSheet, Image} from 'react-native'
 import TasksAdd from './TasksAdd'
 import TasksItem from './TasksItem'
 import Fire from '../../Fire'

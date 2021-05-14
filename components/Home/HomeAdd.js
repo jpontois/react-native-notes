@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import {TextInput, Image, StyleSheet, TouchableOpacity} from 'react-native'
+import {TextInput, Image, StyleSheet, Pressable} from 'react-native'
 import Fire from '../../Fire'
 
 export default function HomeAdd () {
@@ -29,7 +29,7 @@ export default function HomeAdd () {
 
 	return (
 		<>
-			<TouchableOpacity onPress = {() => toggleEditMode(true)} style = {styles.container} >
+			<Pressable onPress = {() => toggleEditMode(true)} style = {styles.container} >
 				<Image style = {styles.img} source = {require('../../assets/add-white.png')}/>
 
 				{editMode && (
@@ -42,7 +42,7 @@ export default function HomeAdd () {
 					autoFocus = {true}
 					/>
 				)}
-			</TouchableOpacity>
+			</Pressable>
 		</>
 	)
 }

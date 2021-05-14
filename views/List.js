@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {Text,TouchableOpacity, TextInput, Image, StyleSheet} from 'react-native'
+import {Text,Pressable, TextInput, Image, StyleSheet} from 'react-native'
 import TasksList from '../components/Tasks/TasksList'
 import DeleteModeButton from '../components/Buttons/deleteModeButton'
 import BackButton from '../components/Buttons/backButton'
@@ -42,7 +42,7 @@ export default connect(state => state) ((props) => {
 			<BackButton/>
 			<DeleteModeButton/>
 
-			<TouchableOpacity style = {styles.header} onPress = {() => toggleEditMode(true)}>
+			<Pressable style = {styles.header} onPress = {() => toggleEditMode(true)}>
 				{
 					!editMode
 					? (
@@ -67,7 +67,7 @@ export default connect(state => state) ((props) => {
 						/>
 					)
 				}
-			</TouchableOpacity>
+			</Pressable>
 
 			<TasksList/>
 		</>
@@ -80,7 +80,8 @@ const styles = StyleSheet.create({
 		width: '85%',
 		marginLeft: '7.5%',
 		marginRight: '7.5%',
-		marginBottom: 30
+		marginBottom: 30,
+		zIndex: 1,
 	},
 	title: {
 		height: 50,

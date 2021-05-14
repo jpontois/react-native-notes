@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import {Text, View, StyleSheet, TouchableOpacity} from 'react-native'
+import {Text, View, StyleSheet, Pressable} from 'react-native'
 import Fire from '../../Fire'
 import {connect} from 'react-redux'
 
@@ -69,7 +69,7 @@ export default connect(state => state) ((props) => {
 
 	return (
 		<>
-			<TouchableOpacity
+			<Pressable
 				onPress = {
 					!props.toggleDeleteMode.deleteMode
 					? () => updateStatus()
@@ -92,7 +92,7 @@ export default connect(state => state) ((props) => {
 				/>
 
 				<Text style = {styles.label}>{task.label}</Text>
-			</TouchableOpacity>
+			</Pressable>
 		</>
 	)
 })

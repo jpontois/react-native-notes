@@ -1,5 +1,5 @@
 import React from 'react'
-import {Text, TouchableOpacity, StyleSheet} from 'react-native'
+import {Text, Pressable, StyleSheet} from 'react-native'
 import {connect} from 'react-redux'
 import Fire from '../../Fire'
 
@@ -30,7 +30,7 @@ export default connect (state => state) ((props) => {
 
 	return (
 		<>
-			<TouchableOpacity
+			<Pressable
 				onPress = {
 					!props.toggleDeleteMode.deleteMode
 					? () => openModal()
@@ -45,7 +45,7 @@ export default connect (state => state) ((props) => {
 			>
 
 				<Text style = {styles.label} >{list.label}</Text>
-			</TouchableOpacity>
+			</Pressable>
 		</>
 	)
 })

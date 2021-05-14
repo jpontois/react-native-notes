@@ -1,5 +1,5 @@
 import React from 'react'
-import {Image, TouchableOpacity, StyleSheet} from 'react-native'
+import {Image, Pressable, StyleSheet} from 'react-native'
 import {connect} from 'react-redux'
 
 const deleteModeButton = (props) => {
@@ -10,9 +10,13 @@ const deleteModeButton = (props) => {
 	})
 
 	return <>
-		<TouchableOpacity onPress = {toggleDeleteMode} style = {styles.button} >
+		<Pressable
+			onPress = {toggleDeleteMode}
+			style = {styles.button}
+			hitSlop = {20}
+		>
 			<Image style = {styles.img} source = {require('../../assets/bin-white.png')}/>
-		</TouchableOpacity>
+		</Pressable>
 	</>
 }
 
@@ -20,7 +24,8 @@ const styles = StyleSheet.create({
 	button: {
 		position: 'absolute',
 		top: 30,
-		right: 15
+		right: 15,
+		zIndex: 9999,
 	},
 	img: {
 		height: 20,
