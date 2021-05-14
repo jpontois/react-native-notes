@@ -18,8 +18,6 @@ export default function App () {
 		toggleKeyboardStatus(true)
 	}
 
-	console.log(keyboardModeHeight)
-
 	const hideKeyboard = () => toggleKeyboardStatus(false)
 
 	return (

@@ -24,7 +24,8 @@ const styles = StyleSheet.create({
 	button: {
 		position: 'absolute',
 		top: 30,
-		left: 15
+		left: 15,
+		zIndex: 9999
 	},
 	img: {
 		height: 20,

@@ -17,7 +17,6 @@ export default connect(state => state) ((props) => {
 				setLists(lists)
 			})
 
-
 			return function unsubscribe () {
 				firebase.detach()
 			}
