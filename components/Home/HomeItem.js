@@ -1,9 +1,9 @@
 import React from 'react'
 import {Text, TouchableOpacity, StyleSheet} from 'react-native'
 import {connect} from 'react-redux'
+import Fire from '../../Fire'
 
 export default connect (state => state) ((props) => {
-
 	const list = props.list
 
 	const openModal = () => {
@@ -16,9 +16,34 @@ export default connect (state => state) ((props) => {
 		})
 	}
 
+	const deleteItem = () => {
+		const firebase = new Fire ((e) => {
+			if (e) return console.log(e)
+
+			firebase.deleteList(list.id)
+
+			return function unsubscribe () {
+				firebase.detach()
+			}
+		})
+	}
+
 	return (
 		<>
-			<TouchableOpacity style = {styles.item} onPress = {() => openModal()}>
+			<TouchableOpacity
+				style = {
+					props.toggleDeleteMode.deleteMode
+					? styles.item
+					: [styles.item, styles.deleteMode]
+				}
+
+				onPress = {
+					props.toggleDeleteMode.deleteMode
+					? () => openModal()
+					: () => deleteItem()
+				}
+			>
+
 				<Text style = {styles.label} >{list.label}</Text>
 			</TouchableOpacity>
 		</>
@@ -39,5 +64,8 @@ const styles = StyleSheet.create({
 		height: 40,
 		lineHeight: 40,
 		width: '100%'
+	},
+	deleteMode: {
+		backgroundColor: 'red'
 	}
 })

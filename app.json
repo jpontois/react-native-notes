@@ -1,9 +1,10 @@
 {
   "expo": {
-    "name": "cours",
+    "name": "dodolist",
     "slug": "cours",
-    "version": "1.0.0",
-    "orientation": "portrait",
+    "version": "134.28.4",
+	"package": "io.exp.dodolist",
+	"orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
       "image": "./assets/splash.png",

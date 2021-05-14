@@ -83,7 +83,9 @@ export default connect (state => state) ((props) => {
 
 const styles = StyleSheet.create({
 	title: {
-		width: '100%',
+		width: '85%',
+		marginLeft: '7.5%',
+		marginRight: '7.5%',
 		height: 50,
 		lineHeight: 50,
 		color: '#fff',
