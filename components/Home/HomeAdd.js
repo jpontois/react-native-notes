@@ -7,6 +7,8 @@ export default function HomeAdd () {
 	const [editMode, toggleEditMode] = useState(false)
 
 	const onSubmitEditing = () => {
+		if (!text) return false
+
 		const firebase = new Fire ((e) => {
 			if (e) return console.log(e)
 
@@ -39,7 +41,7 @@ export default function HomeAdd () {
 					onBlur = {() => toggleEditMode(false)}
 					autoFocus = {true}
 					/>
-					)}
+				)}
 			</TouchableOpacity>
 		</>
 	)
@@ -47,7 +49,9 @@ export default function HomeAdd () {
 
 const styles = StyleSheet.create({
 	container: {
-		width: '100%',
+		width: '90%',
+		marginLeft: '5%',
+		marginRight: '5%',
 		height: 40,
 		flex: 1,
 		flexDirection: 'row',
@@ -55,18 +59,20 @@ const styles = StyleSheet.create({
 	img: {
 		height: 20,
 		width: 20,
-		marginLeft: '5.5%',
+		marginLeft: 10,
 		marginTop: 15
 	},
 	input: {
-		width: '90%',
+		width: '85%',
 		height: 40,
+		paddingLeft: 5,
 		lineHeight: 40,
-		marginLeft: '5%',
-		marginRight: '5%',
+		marginLeft: 10,
 		borderBottomWidth: 0.5,
 		borderBottomColor: '#fff',
-		borderBottom: '#fff',
 		color: '#fff',
+	},
+	disabled: {
+		display: 'none',
 	}
 })

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import {Text, View, StyleSheet} from 'react-native'
+import {Text, ScrollView, StyleSheet} from 'react-native'
 import Fire from '../../Fire'
 import HomeItem from './HomeItem'
 import HomeAdd from './HomeAdd'
@@ -28,17 +28,20 @@ export default connect(state => state) ((props) => {
 			<>
 				<Text style = {styles.title}>DODOLIST</Text>
 				<DeleteModeButton style = {styles.deleteModeButton}/>
+				
+				<ScrollView>
+					{ lists.map((item) => {
+						return (
+							<HomeItem
+								key = {item.id}
+								list = {item}
+							/>
+						)
+					})}
+					
+					<HomeAdd/>
+				</ScrollView>
 
-				{ lists.map((item) => {
-					return (
-						<HomeItem
-							key = {item.id}
-							list = {item}
-						/>
-					)
-				})}
-
-				<HomeAdd/>
 			</>
 		)
 })

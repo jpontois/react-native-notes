@@ -39,33 +39,47 @@ export default connect(state => state) ((props) => {
 		<>
 			<TouchableOpacity
 				onPress = {() => updateStatus()}
-				style = {styles.list}
+				style = {styles.item}
 			>
 				<View
-					style = {status ? styles.enabledCheckbox : styles.disabledCheckbox}
+					style = {
+						status
+						? [styles.checkbox, styles.done]
+						: styles.checkbox
+					}
 				/>
-				<Text>{task.label}</Text>
+
+				<Text style = {styles.label}>{task.label}</Text>
 			</TouchableOpacity>
 		</>
 	)
 })
 
 const styles = StyleSheet.create({
-	list: {
-		height: 50,
-		width: '100%',
+	item: {
+		height: 40,
+		width: '90%',
+		flex: 1,
+		flexDirection: 'row',
+		alignItems: 'center',
+		marginLeft: '5%',
+		marginRight: '5%',
+		borderBottomWidth: 0.5,
+		borderBottomColor: '#fff',
+	},
+	label: {
+		height: 40,
+		lineHeight: 40,
+		marginLeft: 10,
+		color: '#fff',
+	},
+	checkbox: {
+		width: 20,
+		height: 20,
 		backgroundColor: 'red',
+		borderRadius: 5,
 	},
-	enabledCheckbox: {
-		width: 20,
-		height: 20,
-		borderBottomColor: 'grey',
-		backgroundColor: 'blue',
-	},
-	disabledCheckbox: {
-		width: 20,
-		height: 20,
-		borderBottomColor: 'grey',
+	done: {
 		backgroundColor: 'green',
 	},
 })

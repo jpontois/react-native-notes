@@ -19,7 +19,7 @@ const deleteModeButton = (props) => {
 const styles = StyleSheet.create({
 	button: {
 		position: 'absolute',
-		top: 15,
+		top: 30,
 		right: 15
 	},
 	img: {

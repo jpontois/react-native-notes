@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import {TextInput, Text, StyleSheet, Pressable} from 'react-native'
+import {TextInput, Text, StyleSheet, TouchableOpacity, Image} from 'react-native'
 import Fire from '../../Fire'
 import {connect} from 'react-redux'
 
@@ -9,6 +9,7 @@ export default connect(state => state) ((props) => {
 	const [duplicateAlerte, toggleDuplicateAlert] = useState(false)
 
 	const onSubmitEditing = () => {
+		if (!text) return false
 
 		const firebase = new Fire ((e) => {
 			if (e) return console.log(e)
@@ -55,50 +56,70 @@ export default connect(state => state) ((props) => {
 
 	return (
 		<>
-			<Pressable style={styles.add} onPress={() => {
+			<TouchableOpacity style={styles.container} onPress={() => {
 				toggleEditMode(true)
-			}}/>
+			}}>
 
-			{editMode && (
-				<TextInput
-					style = {
-						editMode 
-						? duplicateAlerte
-							? [styles.input, styles.duplicateMode]
-							: styles.input
-						: styles.disabled
-					}
-					value = {text}
-					onChangeText = {onChangeText}
-					onSubmitEditing = {() => onSubmitEditing()}
-					onBlur = {() => toggleEditMode(false)}
-					autoFocus = {true}
-				/>
-			)}
+				<Image style = {styles.img} source = {require('../../assets/add-white.png')}/>
 
-			{duplicateAlerte &&
-				<Text>
-					Cette tâche existe déjà. Il y a déjà assez a faire comme ça !
-				</Text>
-			}
+				{editMode && (
+					<TextInput
+						style = {
+							editMode 
+							? duplicateAlerte
+								? [styles.input, styles.duplicateMode]
+								: styles.input
+							: styles.disabled
+						}
+						value = {text}
+						onChangeText = {onChangeText}
+						onSubmitEditing = {() => onSubmitEditing()}
+						onBlur = {() => toggleEditMode(false)}
+						autoFocus = {true}
+					/>
+				)}
+
+				{duplicateAlerte &&
+					<Text>
+						Cette tâche existe déjà. Il y a déjà assez a faire comme ça !
+					</Text>
+				}
+
+			</TouchableOpacity>
 		</>
 	)
 })
 
 const styles = StyleSheet.create({
-	add: {
+	container: {
+		width: '90%',
+		marginLeft: '5%',
+		marginRight: '5%',
+		height: 40,
+		flex: 1,
+		flexDirection: 'row',
+	},
+	img: {
 		height: 20,
 		width: 20,
-		backgroundColor: 'yellow'
+		marginLeft: 10,
+		marginTop: 15
 	},
 	input: {
-		height: 20,
-		width: 20,
-		backgroundColor: 'red'
+		width: '85%',
+		height: 40,
+		paddingLeft: 5,
+		lineHeight: 40,
+		marginLeft: 10,
+		borderBottomWidth: 0.5,
+		borderBottomColor: '#fff',
+		color: '#fff',
 	},
 	duplicateMode: {
-		borderColor: 'yellow',
-		borderStyle: 'solid',
-		borderWidth: 1,
+		borderBottomColor: 'red',
+		borderBottomWidth: 1,
+	},
+	disabled: {
+		display: 'none',
 	}
 })

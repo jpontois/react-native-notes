@@ -14,13 +14,18 @@ export default connect (state => state) ((props) => {
 	)
 
 	return <>
-		<TouchableOpacity onPress = {getBack}>
+		<TouchableOpacity onPress = {getBack} style = {styles.button}>
 			<Image style = {styles.img} source = {require('../../assets/arrow-left-white.png')}/>
 		</TouchableOpacity>
 	</>
 })
 
 const styles = StyleSheet.create({
+	button: {
+		position: 'absolute',
+		top: 30,
+		left: 15
+	},
 	img: {
 		height: 20,
 		width: 20,
