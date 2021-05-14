@@ -1,16 +1,18 @@
 {
   "expo": {
     "name": "dodolist",
-    "slug": "cours",
+    "slug": "dodolist-slug",
     "version": "134.28.4",
-	"package": "io.exp.dodolist",
 	"orientation": "portrait",
     "icon": "./assets/icon.png",
+	"bundleIdentifier": "io.exp.dodolist",
+	"sdk": "XX.0.0",
     "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+		"image": "./assets/splash.png",
+		"resizeMode": "contain",
+		"backgroundColor": "#ffffff"
     },
+	"package": "io.exp.dodolist",
     "updates": {
       "fallbackToCacheTimeout": 0
     },
