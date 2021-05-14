@@ -15,7 +15,7 @@ export default function HomeAdd () {
 			firebase.addList(
 				{
 					label: text,
-					task: []
+					tasks: []
 				}
 			)
 
@@ -66,7 +66,6 @@ const styles = StyleSheet.create({
 		width: '85%',
 		height: 40,
 		paddingLeft: 5,
-		lineHeight: 40,
 		marginLeft: 10,
 		borderBottomWidth: 0.5,
 		borderBottomColor: '#fff',

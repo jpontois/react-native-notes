@@ -31,16 +31,16 @@ export default connect (state => state) ((props) => {
 	return (
 		<>
 			<TouchableOpacity
-				style = {
-					props.toggleDeleteMode.deleteMode
-					? styles.item
-					: [styles.item, styles.deleteMode]
-				}
-
 				onPress = {
-					props.toggleDeleteMode.deleteMode
+					!props.toggleDeleteMode.deleteMode
 					? () => openModal()
 					: () => deleteItem()
+				}
+
+				style = {
+					!props.toggleDeleteMode.deleteMode
+					? styles.item
+					: [styles.item, styles.deleteMode]
 				}
 			>
 
@@ -60,10 +60,10 @@ const styles = StyleSheet.create({
 		borderBottomColor: '#fff',
 	},
 	label: {
-		color: '#fff',
 		height: 40,
 		lineHeight: 40,
-		width: '100%'
+		marginLeft: 10,
+		color: '#fff',
 	},
 	deleteMode: {
 		backgroundColor: 'red'

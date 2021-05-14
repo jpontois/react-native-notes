@@ -4,14 +4,19 @@ import {connect} from 'react-redux'
 
 export default connect (state => state) ((props) => {
 
-	const getBack = () => (
+	const getBack = () => {
+		props.dispatch({
+			type: 'toggleDeleteMode',
+			value: false
+		})
+
 		props.dispatch({
 			type: 'toggleModal',
 			value: {
 				active: false
 			}
 		})
-	)
+	}
 
 	return <>
 		<TouchableOpacity onPress = {getBack} style = {styles.button}>

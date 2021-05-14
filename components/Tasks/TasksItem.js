@@ -35,12 +35,34 @@ export default connect(state => state) ((props) => {
 		return list
 	}
 
+	const deleteItem = () => {
+		const firebase = new Fire ((e) => {
+			if (e) return console.log(e)
+
+			firebase.deleteList(list.id)
+
+			return function unsubscribe () {
+				firebase.detach()
+			}
+		})
+	}
+
 	return (
 		<>
 			<TouchableOpacity
-				onPress = {() => updateStatus()}
-				style = {styles.item}
+				onPress = {
+					!props.toggleDeleteMode.deleteMode
+					? () => updateStatus()
+					: () => deleteItem()
+				}
+
+				style = {
+					!props.toggleDeleteMode.deleteMode
+					? styles.item
+					: [styles.item, styles.deleteMode]
+				}
 			>
+
 				<View
 					style = {
 						status
