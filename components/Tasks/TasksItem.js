@@ -39,12 +39,32 @@ export default connect(state => state) ((props) => {
 		const firebase = new Fire ((e) => {
 			if (e) return console.log(e)
 
-			firebase.deleteList(list.id)
+			const newList = getNewList()
+			firebase.updateList(newList)
+
+			props.dispatch({
+				type: 'toggleModal',
+				value: {
+					active: true,
+					list: newList
+				}
+			})
 
 			return function unsubscribe () {
 				firebase.detach()
 			}
 		})
+
+	}
+
+	const getNewList = () => {
+		let newList = list
+		let newTasks = []
+		list.tasks.map((val) => {
+			if (val.label !== task.label) newTasks.push(val)
+		})
+		newList.tasks = newTasks
+		return newList
 	}
 
 	return (
@@ -104,4 +124,7 @@ const styles = StyleSheet.create({
 	done: {
 		backgroundColor: 'green',
 	},
+	deleteMode: {
+		backgroundColor: 'red'
+	}
 })
